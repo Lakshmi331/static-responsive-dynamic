@@ -101,6 +101,10 @@ class App extends Component {
     return filteredProjects
   }
 
+  updatedActiveTabId = tabId => {
+    this.setState({activeTabId: tabId})
+  }
+
   render() {
     const filteredProjects = this.getFilteredProjects()
     return (
@@ -115,7 +119,11 @@ class App extends Component {
 
         <ul className="tabs-container">
           {tabsList.map(tabDetails => (
-            <TabItem key={tabDetails.tabId} tabDetails={tabDetails} />
+            <TabItem
+              key={tabDetails.tabId}
+              tabDetails={tabDetails}
+              updatedActiveTabId={this.updatedActiveTabId}
+            />
           ))}
         </ul>
 
